@@ -17,31 +17,12 @@
   ;; do not override space ever
   (general-override-mode)
 
-  ;; helpers for defining major-mode keybindings
-  ;; (general-create-definer aj/leader/major
-  ;;   :states '(normal motion emacs)
-  ;;   :prefix ",")
-
-  ;; helpers for global keybindings that work everywhere
-  ;; 
-  ;; (general-create-definer aj/leader/global
-  ;;   :keymaps 'override
-  ;;   :states 'normal
-  ;;   :prefix "SPC")
-  ;; (general-create-definer aj/global
-  ;;   :keymaps 'override
-  ;;   :states '(normal motion emacs)
-  ;; )
-
-  ;;
-  ;; buffer manipulation
-  ;;
-
-  ;; global evil rebindings
-  ;; (aj/global
-  ;;   "[b"  'evil-prev-buffer
-  ;;   "]b"  'evil-next-buffer
-  ;;   )
+  (defvar aj-leader-map (make-sparse-keymap) "everyweir")
+  (defvar aj-mm-map (make-sparse-keymap) "somewheir")
+  (general-define-key
+     :states '(normal motion)
+     "SPC" aj-leader-map
+  )
 
   ;;
   ;; window manipulation
@@ -49,16 +30,24 @@
 
   (winner-mode) ; included with emacs
 
-  ;; new plan: define keymap for leader SPC
-  ;; use evil-define-key to 
-  (defvar aj-global-map (make-sparse-keymap) "Everyweir")
-  (define-key evil-motion-state-map (kbd "SPC") aj-global-map)
-  (define-key evil-normal-state-map (kbd "SPC") aj-global-map)
+  (general-def aj-leader-map
+    "w" 'evil-window-map
+    )
+  (general-def evil-window-map
+    "m"   'delete-other-windows
+    "u"   'winner-undo
+    "r"   'winner-redo
+    )
 
-  (define-key aj-global-map "w" 'evil-window-map)
-  (define-key evil-window-map "m"   'delete-other-windows)
-  (define-key evil-window-map "u"   'winner-undo)
-  (define-key evil-window-map "r"   'winner-redo)
+  ;;
+  ;; buffer manipulation
+  ;;
+
+  (general-define-key
+    :states 'normal
+    "[b"  'evil-prev-buffer
+    "]b"  'evil-next-buffer
+    )
 )
 
 (use-package evil-collection
@@ -72,6 +61,7 @@
   (evil-collection-init 'minibuffer)
   (evil-collection-init 'info)
   (evil-collection-init 'compile)
+  (evil-collection-init 'dired)
   )
   
 (use-package which-key
