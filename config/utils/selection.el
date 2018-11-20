@@ -6,10 +6,19 @@
   (evil-collection-init 'ivy)
   )
 
-; provided by ivy
 (use-package counsel
+  :ensure t
+  :diminish counsel-mode
   :after ivy
   :general
-  (:keymaps 'aj-leader-key
+  (:keymaps 'aj-leader-map
    "x" 'counsel-M-x)
+  )
+
+(use-package swiper
+  :ensure t
+  :after ivy
+  :general
+    (:states '(normal motion)
+    "/" 'swiper)
   )

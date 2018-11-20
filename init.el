@@ -1,5 +1,6 @@
 ; initialize the load path
 (add-to-list 'load-path "~/.emacs.d/config/")
+(add-to-list 'load-path "~/.emacs.d/lib/")
 
 ; setup package manager
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -19,7 +20,7 @@
 ;; (load "editor")
 
 ;; (load "utils/backup")
-;; (load "utils/git")
+(load "utils/git")
 (load "utils/ranger")
 (load "utils/projectile")
 ;; (load "utils/perspective")

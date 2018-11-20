@@ -1,5 +1,10 @@
-; (use-package spacemacs-theme
-;  :ensure t)
+(set-face-attribute 'default nil
+                    :family "DejaVu Sans Mono for Powerline"
+                    :weight 'normal
+                    :width 'normal)
+
+(use-package all-the-icons
+  :ensure t)
 
 (use-package solarized-theme
   :ensure t)
@@ -9,7 +14,13 @@
   :init
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
-  )
+)
+
+(use-package telephone-line-config
+  :ensure telephone-line
+  :config
+  (telephone-line-evil-config)
+)
 
 ; minimal ui
 (scroll-bar-mode -1)			;
@@ -18,4 +29,4 @@
 (menu-bar-mode   -1)
 
 ; select theme
-(load-theme 'solarized-dark t)
+(load-theme 'spacemacs-dark t)

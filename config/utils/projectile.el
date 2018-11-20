@@ -11,7 +11,7 @@
 
 (use-package counsel-projectile
   :ensure t
-  :after (counsel projectile)
+  :after (projectile)
   :init
   (counsel-projectile-mode)
   )

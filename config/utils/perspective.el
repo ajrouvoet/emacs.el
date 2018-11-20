@@ -3,8 +3,4 @@
 
   :init
   (persp-mode)
-
-  :config
-  (aj/leader/global
-    )
   )

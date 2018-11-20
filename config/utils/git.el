@@ -1,8 +1,8 @@
 (use-package magit
   :ensure t
   :after (general evil)
-  :init ; todo general
-  (aj/leader/global
+  :general
+  (:keymaps 'aj-leader-map
     "gs" 'magit-status
     )
   )
