@@ -8,9 +8,8 @@
 
 ; provided by ivy
 (use-package counsel
-  :ensure t
   :after ivy
-  :init ; todo ':general'
-  (aj/leader/global
+  :general
+  (:keymaps 'aj-leader-key
    "x" 'counsel-M-x)
   )

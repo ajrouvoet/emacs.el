@@ -20,18 +20,18 @@
 
 ;; (load "utils/backup")
 ;; (load "utils/git")
-;; (load "utils/ranger")
-;; (load "utils/projectile")
+(load "utils/ranger")
+(load "utils/projectile")
 ;; (load "utils/perspective")
-;; (load "utils/selection")
+(load "utils/selection")
 
-;; (load "lang/agda")
+(load "lang/agda")
 
 ;; garbage from here
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; If you edit it by hand,you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes

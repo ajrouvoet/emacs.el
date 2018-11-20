@@ -1,8 +1,8 @@
 (use-package ranger
   :ensure t
-  :init ;; TODO ':general'
-  (aj/leader/global
-    :which-key "ranger"
+  :general
+  (:which-key "ranger"
+   :keymaps   'aj-leader-map
     "ar" 'ranger
     "ad" 'deer
     )

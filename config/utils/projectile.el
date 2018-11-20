@@ -4,9 +4,9 @@
   (projectile-mode)
 
   :general
-  (aj/leader/global
-    "p" projectile-command-map
-    )
+  (:which-key "Projecting!"
+   :keymaps 'aj-leader-map
+   "p" projectile-command-map)
   )
 
 (use-package counsel-projectile
