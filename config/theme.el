@@ -3,18 +3,17 @@
                     :weight 'normal
                     :width 'normal)
 
-(use-package all-the-icons
-  :ensure t)
-
-(use-package solarized-theme
-  :ensure t)
-
-(use-package doom-themes
+(use-package nord-theme
   :ensure t
-  :init
-  (setq doom-themes-enable-bold t
-	doom-themes-enable-italic t)
-)
+  :config
+  (load-theme 'nord t nil)
+  )
+
+(use-package base16-theme
+  :ensure t
+  :config
+  ; ocean*, gruvbox-*, paraiso; nord
+  )
 
 (use-package telephone-line-config
   :ensure telephone-line
@@ -27,6 +26,3 @@
 (tool-bar-mode   -1)
 (tooltip-mode    -1)
 (menu-bar-mode   -1)
-
-; select theme
-(load-theme 'spacemacs-dark t)

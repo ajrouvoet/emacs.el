@@ -1,9 +1,14 @@
+(use-package flx
+  :ensure t)
+
 (use-package ivy
   :ensure t
   :init
   (ivy-mode)
   :config
   (evil-collection-init 'ivy)
+  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-re-builders-alist '((t . ivy--regex-plus)))
   )
 
 (use-package counsel

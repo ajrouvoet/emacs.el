@@ -1,37 +1,36 @@
 ;; parenthesis
 (use-package evil-surround
   :ensure t
-  :config
+  :init
   (global-evil-surround-mode 1)
 
-  (aj/global evil-surround-mode-map
-    :states 'normal
-    "c"  nil
-    "cs" 'evil-surround-change
-    )
-  (aj/global evil-surround-mode-map
-    :states 'visual
-    "s"  'evil-surround-region
-    )
+  :general
+  (:states 'normal
+   "c"  nil
+   "cs" 'evil-surround-change)
+
+  (:states 'visual
+   "s"  'evil-surround-region)
   )
 
-;; comments
-;; todo keymap + which key support
-(aj/leader/global
-  :states '(normal visual)
-  "c"  nil
-  "cl" 'comment-line
-  )
-(aj/leader/global
-  :states 'visual
-  "cp" 'comment-or-uncomment-region
-  )
+(use-package expand-region
+  :ensure t
+  :general
+  (:keymaps 'aj-leader-map
+   "rg" 'er/expand-region
+   "rs" 'er/contract-region
+  ))
 
+(use-package iedit
+  :ensure t)
+
+(use-package evil-iedit-state
+  :ensure t
+  :commands (evil-iedit-state evil-iedit-state/iedit-mode))
+  
 ;; navigation
 (use-package avy
   :ensure t
-  :config
-  (aj/leader/global
-    "jj" 'avy-goto-char
-    )
-  )
+  :general
+  (:keymaps 'aj-leader-map
+   "jj" 'avy-goto-char))

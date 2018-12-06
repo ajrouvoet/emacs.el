@@ -5,26 +5,21 @@
 ; setup package manager
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")))
-
-(package-refresh-contents)
 (package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-
-(eval-when-compile 
-  (require 'use-package))
+(unless (package-installed-p 'use-package) (package-install 'use-package))
+(eval-when-compile (require 'use-package))
 
 (load "theme")
 (load "keys")
-;; (load "editor")
+(load "editor")
 
-;; (load "utils/backup")
+(load "utils/backup")
 (load "utils/git")
 (load "utils/ranger")
 (load "utils/projectile")
-;; (load "utils/perspective")
 (load "utils/selection")
+(load "utils/pdf")
+;; (load "utils/perspective")
 
 (load "lang/agda")
 
