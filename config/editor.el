@@ -1,3 +1,9 @@
+;; line numbers
+(use-package nlinum
+  :ensure t
+  :config
+  (global-nlinum-mode))
+
 ;; parenthesis
 (use-package evil-surround
   :ensure t
@@ -34,3 +40,21 @@
   :general
   (:keymaps 'aj-leader-map
    "jj" 'avy-goto-char))
+
+;; autocomplete
+(use-package company
+  :ensure t
+  :after evil-collection
+
+  :general
+  (:states '(normal insert)
+   "TAB" 'company-complete)
+
+  :config
+  ; enable the mode and the evil keybindings
+  (company-mode)
+  (evil-collection-init 'company)
+
+  ;; enable the capf backend
+  (push 'company-capf company-backends)
+  )

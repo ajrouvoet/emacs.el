@@ -73,6 +73,7 @@
   (evil-collection-setup-minibuffer t)
 
   :config
+  ;; enable evil maps for various builtin things
   (evil-collection-init 'minibuffer)
   (evil-collection-init 'info)
   (evil-collection-init 'compile)
