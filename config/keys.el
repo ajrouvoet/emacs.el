@@ -81,9 +81,23 @@
   (evil-collection-init 'ibuffer)
   )
   
-; awesome menus
+;; awesome menus
 (use-package which-key
   :ensure t
   :config
   (which-key-mode)
   )
+
+;; ace window manipulation
+(use-package ace-window
+  :ensure t
+
+  :config
+  ;; use the homerow keys
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  ;; also show with fewer than 2 windows
+  (setq aw-dispatch-always t)
+
+  (general-def evil-window-map
+    "a" 'ace-window))
+      
