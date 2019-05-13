@@ -8,18 +8,22 @@
   :ensure t
   :config
 
-  ;; zoom
-  (defhydra hydra-zoom ()
-    "Zoom!"
-    ("i" text-scale-increase "zoom-in")
-    ("d" text-scale-decrease "zoom-out"))
-  (general-def aj-leader-map "z" 'hydra-zoom/body)
+  ;; indenting
+  (defhydra hydra-indent-rigidly ()
+    "Indent rigidly"
+    ("l" indent-rigidly-right)
+    ("h" indent-rigidly-left)
+    )
+  (general-define-key
+    :states 'visual
+    "TAB" 'hydra-indent-rigidly/body)
   )
 
 (use-package evil
   :ensure t
   :after general
   :init
+  (setq evil-want-abbrev-expand-on-insert-exit nil)
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
 
@@ -40,7 +44,7 @@
     "w" 'evil-window-map
     )
   (general-def evil-window-map
-    "m"   'delete-other-windows
+    "M"   'delete-other-windows
     "u"   'winner-undo
     "r"   'winner-redo
     )

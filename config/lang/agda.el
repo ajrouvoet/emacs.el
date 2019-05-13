@@ -1,10 +1,13 @@
-(setq agda-mode-path "/nix/store/kpanrd3ma5zxqmr19g2762xcfdhf39k1-Agda-2.6.0/share/x86_64-linux-ghc-8.4.3/Agda-2.6.0/emacs-mode/agda2.el")
 (use-package agda2-mode
   :defer t
   :after hydra
 
   :init
+  ;; load agda-mode
+  ;; (setq agda-mode-path "/nix/store/1zznk7qcblb1gbxxbv4wsxjpjhxcd1wc-Agda-2.6.0/share/x86_64-linux-ghc-8.4.3/Agda-2.6.0/emacs-mode/agda2.el")
+  (setq agda-mode-path "/nix/store/6g67frb3g3v400h10yqla45m1awsi66y-Agda-2.6.0/share/x86_64-linux-ghc-8.4.3/Agda-2.6.0/emacs-mode/agda2.el")
   (load-file agda-mode-path)
+
   (progn
     (mapc
      (lambda (x) (add-to-list 'face-remapping-alist x))
@@ -24,7 +27,6 @@
    :states  'normal
    :keymaps 'agda2-mode-map
    "gd"  'agda2-goto-definition-keyboard)
-
 
   ;; a hydra for goal navigation
   (defhydra hydra-agda-goals ()
@@ -65,3 +67,5 @@
    "xq"  'agda2-quit
    "xr"  'agda2-restart)
   )
+
+(use-package agda-input)

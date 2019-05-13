@@ -12,6 +12,7 @@
 (load "theme")
 (load "keys")
 (load "editor")
+(load "layout")
 
 (load "utils/backup")
 (load "utils/git")

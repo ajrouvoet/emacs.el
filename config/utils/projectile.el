@@ -23,9 +23,10 @@
 
   :config
   (defhydra hydra-eyebrowse ()
-    "Eyebrowse"
-    ("n" eyebrowse-next-window-config)
-    ("p" eyebrowse-prev-window-config)
+    "Projecting"
+    ("p" counsel-projectile-switch-project)
+    ("f" counsel-projectile-find-file)
+
     ("c" eyebrowse-close-window-config)
     ("," eyebrowse-rename-window-config)
 

@@ -2,11 +2,25 @@
 (setq
    tab-width 2)
 
+;; scaling
+(use-package default-text-scale
+  :ensure t
+  :init 
+  (default-text-scale-mode)
+  :config
+  ;; zoom
+  (defhydra hydra-zoom ()
+    "Zoom!"
+    ("i" default-text-scale-increase "zoom-in")
+    ("d" default-text-scale-decrease "zoom-out"))
+  (general-def aj-leader-map "z" 'hydra-zoom/body)
+  )
+
 ;; line numbers
 (use-package nlinum
   :ensure t
   :config
-  (setq nlinum-highlight-current-line t)
+  ;; (setq nlinum-highlight-current-line t)
   (setq nlinum-format " %d ")
 
   ;; line numbers everywhere
