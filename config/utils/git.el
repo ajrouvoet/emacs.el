@@ -29,3 +29,23 @@
 
   ;; enable the git gutter
   (global-git-gutter-mode))
+
+(use-package forge
+  :ensure t
+  :after magit
+  :config
+  (defhydra hydra-forge ()
+    "Forge"
+    ("n" forge-create-post "new post")
+    ("e" forge-edit-post   "edit post")
+    ("c" forge-edit-topic-title "edit title")
+    ("S" forge-edit-topic-state "edit topic state")
+    ("l" forge-edit-topic-labels "edit labels")
+    ("a" forge-edit-topic-assignees "edit assignees")
+
+    ("c" forge-post-submit "commit topic")
+    ("x" forge-post-cancel "abort topic"))
+  :general
+  (:keymaps 'aj-leader-map
+    "h" 'hydra-forge/body
+  ))

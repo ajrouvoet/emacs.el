@@ -1,6 +1,8 @@
 ;; tabs
 (setq
    tab-width 2)
+(setq-default
+   indent-tabs-mode nil)
 
 ;; scaling
 (use-package default-text-scale
@@ -79,7 +81,7 @@
 (use-package evil-iedit-state
   :ensure t
   :commands (evil-iedit-state evil-iedit-state/iedit-mode))
-  
+
 ;; navigation
 (use-package avy
   :ensure t
