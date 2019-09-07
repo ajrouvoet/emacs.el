@@ -1,12 +1,8 @@
-(use-package focus
-  :ensure t)
-
 (use-package tex
   :ensure auctex
 
   :config
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-  (add-hook 'LaTeX-mode-hook 'focus-mode)
 
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
@@ -41,8 +37,8 @@
     :prefix ","
 
     ;; environments
-    "e"   'latex-environment
-    "c"   'latex-close-environment
+    "e"   'LaTeX-environment
+    "c"   'LaTeX-close-environment
 
     ;; navigation
     "n"   'hydra-thing-navigation/focus-next-thing
@@ -60,3 +56,10 @@
     "xfr" 'latex/font-serif
     )
   )
+
+(use-package writeroom-mode :ensure t
+  :init
+  (setq writeroom-width 120)
+  )
+
+(use-package biblio :ensure t)

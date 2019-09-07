@@ -15,14 +15,7 @@
 (use-package base16-theme
   :ensure t
   :config
-  ; ocean*, gruvbox-*, paraiso; nord
   )
-
-;; (use-package telephone-line-config
-;;   :ensure telephone-line
-;;   :config
-;;   (telephone-line-evil-config)
-;; )
 
 (use-package doom-modeline
       :ensure t

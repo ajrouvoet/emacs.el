@@ -4,6 +4,9 @@
 (setq-default
    indent-tabs-mode nil)
 
+;; yes-and-no questions should be short
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; scaling
 (use-package default-text-scale
   :ensure t

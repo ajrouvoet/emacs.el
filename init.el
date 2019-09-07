@@ -19,10 +19,11 @@
 (load "utils/ranger")
 (load "utils/projectile")
 (load "utils/selection")
-(load "utils/pdf")
+; (load "utils/pdf") slow and unused
 
 (load "lang/agda")
 (load "lang/tex")
+(load "lang/org")
 (load "lang/coq")
 (load "lang/haskell")
 (load "lang/ministatix")
