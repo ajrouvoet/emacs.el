@@ -105,3 +105,5 @@
   (general-def evil-window-map
     "a" 'ace-window))
       
+(if (eq window-system 'x)
+    (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F13'"))

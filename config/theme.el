@@ -27,5 +27,10 @@
 (tooltip-mode    -1)
 (menu-bar-mode   -1)
 
-;; some modifications
+;; highlight 
 (global-hl-line-mode)
+
+;; shortcuts
+(general-def aj-leader-map
+  "wT" 'counsel-load-theme
+)

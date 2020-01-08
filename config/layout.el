@@ -16,3 +16,9 @@
 
   )
 
+(use-package centered-window :ensure t
+  :config
+  (general-def aj-leader-map
+    "wC" 'centered-window-mode
+    )
+  )
