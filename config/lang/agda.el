@@ -8,6 +8,10 @@
   (setq agda-mode-path "/nix/store/6g67frb3g3v400h10yqla45m1awsi66y-Agda-2.6.0/share/x86_64-linux-ghc-8.4.3/Agda-2.6.0/emacs-mode/agda2.el")
   (load-file agda-mode-path)
 
+
+  ;; please don't use agda-mode on lagda files
+  (add-to-list 'auto-mode-alist '("\\.lagda\\'" . latex-mode))
+
   (progn
     (mapc
      (lambda (x) (add-to-list 'face-remapping-alist x))

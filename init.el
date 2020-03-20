@@ -19,7 +19,8 @@
 (load "utils/ranger")
 (load "utils/projectile")
 (load "utils/selection")
-; (load "utils/pdf") slow and unused
+(load "utils/lsp")
+(load "utils/tags")
 
 (load "lang/agda")
 (load "lang/tex")
