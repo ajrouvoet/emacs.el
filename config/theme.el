@@ -1,7 +1,39 @@
-(set-face-attribute 'default nil
-                    :family "DejaVu Sans Mono for Powerline"
+(set-face-attribute 'default t
+                    :family "JetBrains Mono Extra Light"
                     :weight 'normal
                     :width 'normal)
+
+;; (set-fontset-font "fontset-default" "JetBrains Mono Extra Light")
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono Extra Light-10"))
+:; (set-fontset-font "fontset-default" 'unicode  "JetBrains Mono Light")
+:; (set-font "DejaVu Sans Mono")
+;; (set-fontset-font "fontset-default" 'unicode "quivira")
+
+(use-package ligature
+  :load-path "lib/ligature.el/"
+  :config
+  ;; Enable the "www" ligature in every possible major mode
+  (ligature-set-ligatures 't '("www"))
+  ;; Enable traditional ligature support in eww-mode, if the
+  ;; `variable-pitch' face supports it
+  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+  ;; Enable all Cascadia Code ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+                                       ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+                                       "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+                                       "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+                                       "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+                                       "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                                       "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+                                       ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+                                       "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+                                       "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+                                       "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+                                       ))
+  ;; Enables ligature checks globally in all buffers. You can also do it
+  ;; per mode with `ligature-mode'.
+  (global-ligature-mode t))
 
 (use-package doom-themes :ensure t)
 
@@ -27,10 +59,5 @@
 (tooltip-mode    -1)
 (menu-bar-mode   -1)
 
-;; highlight 
+;; highlight
 (global-hl-line-mode)
-
-;; shortcuts
-(general-def aj-leader-map
-  "wT" 'counsel-load-theme
-)

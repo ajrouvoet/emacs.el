@@ -3,9 +3,11 @@
 
   :config
   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  (add-hook 'LaTeX-mode-hook 'whitespace-mode)
+  (add-hook 'LaTeX-mode-hook 'auto-fill-mode)
 
-  (setq TeX-auto-save t)
   (setq TeX-parse-self t)
+  (setq TeX-auto-save nil)
   (setq TeX-save-query nil)
 
   ;; Rebindings for TeX-font
@@ -44,6 +46,9 @@
     "n"   'hydra-thing-navigation/focus-next-thing
     "p"   'hydra-thing-navigation/focus-prev-thing
 
+    ;; ?
+    "f"   'LaTeX-fill-paragraph
+
     ;; formatting
     "xb"  'latex/font-bold
     "xc"  'latex/font-code
@@ -57,9 +62,6 @@
     )
   )
 
-(use-package writeroom-mode :ensure t
-  :init
-  (setq writeroom-width 120)
-  )
-
 (use-package biblio :ensure t)
+
+(use-package writegood-mode :ensure t)

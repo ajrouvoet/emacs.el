@@ -14,7 +14,7 @@
       (let* (
              ;; define several category of keywords
              (x-keywords '("import" "match" "true" "false"
-			   "in" "as" "query" "new" "using" "where" ))
+			   "in" "as" "query" "new" "using" "where" "external"))
              (x-builtins '("edge" "end" "only" "inhabited" "every" "min" "filter" "lexico"))
 
              ;; generate regex string for each category of keywords
@@ -28,7 +28,7 @@
 	  (,"==\\|!=\\|->\\|\\-\\[\\|\\]->\\|:-\\||" . font-lock-keyword-face)
 	  (,"\\b\\([[:lower:]][-[:word:]]+\\)(" (1 font-lock-function-name-face))
 	  (,"\\b\\([[:upper:]][-[:word:]]+\\)(" (1 font-lock-type-face))
-	  (,"\`[[:word:]_*+]+" . font-lock-string-face)
+	  (,"\`[[:word:]_*+?]+" . font-lock-string-face)
           )))
 
 (define-derived-mode ministatix-mode prog-mode "ministatix mode"
@@ -43,3 +43,4 @@
 
 ;; add the mode to the `features' list
 (provide 'ministatix-mode)
+

@@ -1,16 +1,20 @@
 ;; tabs
-(setq
-   tab-width 2)
-(setq-default
-   indent-tabs-mode nil)
+(setq tab-width 2)
+(setq-default indent-tabs-mode nil)
 
-;; yes-and-no questions should be short
-(defalias 'yes-or-no-p 'y-or-n-p)
+;; scroll
+(setq scroll-margin 200
+      scroll-conservatively 0
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
+
+;; stoooop
+(electric-indent-mode -1)
 
 ;; scaling
 (use-package default-text-scale
   :ensure t
-  :init 
+  :init
   (default-text-scale-mode)
   :config
   ;; zoom
@@ -21,16 +25,11 @@
   (general-def aj-leader-map "z" 'hydra-zoom/body)
   )
 
-;; line numbers
-(use-package nlinum
-  :ensure t
-  :config
-  ;; (setq nlinum-highlight-current-line t)
-  (setq nlinum-format " %d ")
-
-  ;; line numbers everywhere
-  (global-nlinum-mode)
-  )
+(global-display-line-numbers-mode)
+(use-package hl-line
+  :init
+  (global-hl-line-mode 1)
+)
 
 ;; parenthesis
 (use-package evil-surround
@@ -47,23 +46,23 @@
    "s"  'evil-surround-region)
   )
 
-(use-package smartparens-config
-  :ensure smartparens
-  :config
-  (add-to-list 'sp-no-reindent-after-kill-modes 'agda-mode)
-  (smartparens-global-strict-mode))
+;; (use-package smartparens-config
+;;   :ensure smartparens
+;;   :config
+;;   (add-to-list 'sp-no-reindent-after-kill-modes 'agda-mode)
+;;   (smartparens-global-strict-mode))
 
-(use-package evil-smartparens
-  :ensure t
-  :config
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+;; (use-package evil-smartparens
+;;   :ensure t
+;;   :config
+;;   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
-  (general-define-key
-   :states 'insert
-   "C-l" 'sp-forward-slurp-sexp
-   "C-h" 'sp-forward-barf-sexp
-   "C-S-l" 'sp-backward-slurp-sexp
-   "C-S-h" 'sp-backward-barf-sexp))
+;;   (general-define-key
+;;    :states 'insert
+;;    "C-l" 'sp-forward-slurp-sexp
+;;    "C-h" 'sp-forward-barf-sexp
+;;    "C-S-l" 'sp-backward-slurp-sexp
+;;    "C-S-h" 'sp-backward-barf-sexp))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -109,3 +108,22 @@
   ;; enable the capf backend
   (push 'company-capf company-backends)
   )
+
+(require 'whitespace)
+(add-hook 'prog-mode-hook (lambda () (whitespace-mode t)))
+(add-hook 'text-mode-hook (lambda () (whitespace-mode t)))
+(setq
+   whitespace-style '(
+     face
+     trailing
+     lines-tail
+     space-before-tab
+     indentation
+     space-after-tab
+   )
+   whitespace-line-column 80)
+
+(setq-default
+   fill-column 80)
+
+(use-package visual-fill-column :ensure t)

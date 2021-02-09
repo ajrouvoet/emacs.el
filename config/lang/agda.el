@@ -1,16 +1,15 @@
 (use-package agda2-mode
   :defer t
   :after hydra
+  :diminish
 
   :init
   ;; load agda-mode
-  ;; (setq agda-mode-path "/nix/store/1zznk7qcblb1gbxxbv4wsxjpjhxcd1wc-Agda-2.6.0/share/x86_64-linux-ghc-8.4.3/Agda-2.6.0/emacs-mode/agda2.el")
-  (setq agda-mode-path "/nix/store/6g67frb3g3v400h10yqla45m1awsi66y-Agda-2.6.0/share/x86_64-linux-ghc-8.4.3/Agda-2.6.0/emacs-mode/agda2.el")
+  ;; (setq agda-mode-path "/home/arjen/projects/agda/.stack-work/install/x86_64-linux-tinfo6/7b252458b329f568a335df7e8e6469f4d479de03cda043a425f0efd843b84cab/8.8.2/share/x86_64-linux-ghc-8.8.2/Agda-2.6.2/emacs-mode/agda2.el")
+  (setq agda-mode-path "/home/arjen/projects/agda/.stack-work/install/x86_64-linux-tinfo6/7b252458b329f568a335df7e8e6469f4d479de03cda043a425f0efd843b84cab/8.8.2/share/x86_64-linux-ghc-8.8.2/Agda-2.6.2/emacs-mode/agda2.el")
+  ;; (setq agda-mode-path "/nix/store/4g7vyqab556q787vdb4yavla43bcgphk-Agda-2.6.1.1-data/share/ghc-8.8.4/x86_64-linux-ghc-8.8.4/Agda-2.6.1.1/emacs-mode/agda2.el")
+
   (load-file agda-mode-path)
-
-
-  ;; please don't use agda-mode on lagda files
-  (add-to-list 'auto-mode-alist '("\\.lagda\\'" . latex-mode))
 
   (progn
     (mapc
@@ -70,6 +69,29 @@
    "xh"  'agda2-display-implicit-arguments
    "xq"  'agda2-quit
    "xr"  'agda2-restart)
+   "<f13>" '(insert (char-from-name "BACKSLASH"))
   )
 
 (use-package agda-input)
+
+(use-package polymode
+  :ensure t
+  :diminish
+
+  :init
+  (define-innermode poly-agdatex-code-innermode
+    :mode 'agda2-mode
+    :head-matcher "^[ \t]*.*[\\]begin{code}.*\n"
+    :tail-matcher "^[ \t]*.*[\\]end{code}.*\n"
+    :head-mode 'host
+    :tail-mode 'host
+  )
+  (define-polymode poly-agdatex-mode
+    :hostmode 'poly-latex-hostmode
+    :innermodes '(poly-agdatex-code-innermode))
+
+  (oset poly-agdatex-code-innermode :adjust-face nil)
+)
+
+;; use the dedicated polymode on lagda files
+(add-to-list 'auto-mode-alist '("\\.lagda\\'" . poly-agdatex-mode))

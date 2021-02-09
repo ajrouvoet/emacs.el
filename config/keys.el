@@ -38,17 +38,6 @@
      "SPC" aj-leader-map
   )
 
-  ;; window manipulation
-  (winner-mode)
-  (general-def aj-leader-map
-    "w" 'evil-window-map
-    )
-  (general-def evil-window-map
-    "M"   'delete-other-windows
-    "u"   'winner-undo
-    "r"   'winner-redo
-    )
-
   ;; buffer manipulation
   (general-define-key
     :states 'normal
@@ -56,7 +45,17 @@
     "]b"  'evil-next-buffer
     )
   (general-def aj-leader-map
-    "bb"  'counsel-ibuffer)
+    :prefix "b"
+    "b"  'counsel-ibuffer
+    "w"  'delete-trailing-whitespace
+  )
+
+  ;; paragraph manipulation
+  (general-def aj-leader-map
+    :prefix "P"
+    "f"  'fill-paragraph
+    "F"  'auto-fill-mode
+  )
 
   ;; comments
   ;; todo keymap + which key support
@@ -65,7 +64,7 @@
     "cl" 'comment-line
     "cp" 'comment-or-uncomment-region
   )
-    
+
 )
 
 ; evil-integration
@@ -84,7 +83,7 @@
   (evil-collection-init 'dired)
   (evil-collection-init 'ibuffer)
   )
-  
+
 ;; awesome menus
 (use-package which-key
   :ensure t
@@ -95,15 +94,15 @@
 ;; ace window manipulation
 (use-package ace-window
   :ensure t
-
+  :after general
   :config
   ;; use the homerow keys
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  ;; (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   ;; also show with fewer than 2 windows
-  (setq aw-dispatch-always t)
+  ;; (setq aw-dispatch-always t)
 
   (general-def evil-window-map
     "a" 'ace-window))
-      
+
 (if (eq window-system 'x)
     (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F13'"))

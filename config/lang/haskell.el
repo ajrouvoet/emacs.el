@@ -1,6 +1,22 @@
 (use-package haskell-mode
   :ensure t)
 
+(use-package dante
+  :ensure t
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  (add-hook 'haskell-mode-hook 'dante-mode)
+  )
+
+(use-package ormolu
+ :ensure t
+ :hook (haskell-mode . ormolu-format-on-save-mode)
+ :bind
+ (:map haskell-mode-map
+   ("C-c r" . ormolu-format-buffer)))
+
 ;; (use-package ghc
 ;;   :ensure t
 ;;   :init
